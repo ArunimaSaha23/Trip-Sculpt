@@ -23,48 +23,38 @@
 //     <RouterProvider router={router} />
 //   </StrictMode>,
 // );
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
 import './index.css';
 import App from './App.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import CreateTrip from './create-trip';;
-import Header from './components/custom/Header';
+import CreateTrip from './create-trip';
+import Header from './components/custom/Header.jsx';
 
-// Define a layout component to include the header on all pages
-const Layout = ({ children }) => (
-  <>
-    <Header />
-    <main>{children}</main>
-  </>
-);
-
-// Define routes
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Layout>
+      <>
+        <Header />
         <App />
-      </Layout>
+      </>
     ),
   },
   {
     path: '/create-trip',
     element: (
-      <Layout>
+      <>
+        <Header />
         <CreateTrip />
-      </Layout>
+      </>
     ),
-  }
+  },
 ]);
 
-// Render the app with routing
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <Toaster /> */}
     <RouterProvider router={router} />
   </StrictMode>
 );
-
