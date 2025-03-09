@@ -264,6 +264,7 @@ import {
 } from "@/components/ui/dialog"
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 // Custom hook for Firebase authentication
 const useGoogleLogin = () => {
@@ -320,6 +321,7 @@ const CreateTrip = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [pendingTripGeneration, setPendingTripGeneration] = useState(false);
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     destination: '',
     noOfDays: '',
@@ -370,7 +372,8 @@ const CreateTrip = () => {
       id: docId,
       createdAt: new Date().toISOString()
     });
-    setLoading(false)
+    setLoading(false);
+    navigate('/view-trip/'+docId);
   };
   const onGenerateTrip = async () => {
   

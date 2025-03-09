@@ -31,6 +31,8 @@ import App from './App.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import CreateTrip from './create-trip';
 import Header from './components/custom/Header.jsx';
+import Viewtrip from './view-trip/[tripId]/index.jsx';
+import MyTrips from './my-trips/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,24 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path:'/view-trip/:tripId',
+    element:(
+      <>
+      <Header/>
+      <Viewtrip/>
+      </>
+  )
+  },
+  {
+    path:'/my-trips',
+    element:(
+      <>
+      <Header/>
+      <MyTrips/>
+      </>
+  )
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
